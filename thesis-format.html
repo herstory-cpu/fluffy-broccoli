@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文格式修改助手 - 毕业论文格式服务</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* 春季色调 */
+        .spring {
+            --primary-color: #a8e6cf;
+            --secondary-color: #88d8b0;
+            --accent-color: #ffeaa7;
+            --bg-gradient: linear-gradient(135deg, #f8b4b4 0%, #fcd5ce 50%, #f9e4d0 100%);
+        }
+
+        /* 夏季色调 */
+        .summer {
+            --primary-color: #74b9ff;
+            --secondary-color: #0984e3;
+            --accent-color: #fdcb6e;
+            --bg-gradient: linear-gradient(135deg, #00b894 0%, #55efc4 50%, #81ecec 100%);
+        }
+
+        /* 秋季色调 */
+        .autumn {
+            --primary-color: #dfe6e9;
+            --secondary-color: #b2bec3;
+            --accent-color: #fab1a0;
+            --bg-gradient: linear-gradient(135deg, #fdcb6e 0%, #e17055 50%, #d63031 100%);
+        }
+
+        /* 冬季色调 */
+        .winter {
+            --primary-color: #dfe6e9;
+            --secondary-color: #b2bec3;
+            --accent-color: #81ecec;
+            --bg-gradient: linear-gradient(135deg, #636e72 0%, #b2bec3 50%, #dfe6e9 100%);
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            transition: background 0.5s ease;
+        }
+
+        /* 磨砂玻璃效果 */
+        .frosted-glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        /* 导航栏 */
+        header {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 天气和运势提醒 */
+        .reminder-bar {
+            margin-top: 80px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .weather-card, .fortune-card {
+            padding: 15px 25px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .weather-icon, .fortune-icon {
+            font-size: 30px;
+        }
+
+        .weather-info, .fortune-info {
+            font-size: 14px;
+        }
+
+        .weather-temp {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .fortune-text {
+            font-size: 16px;
+        }
+
+        /* 主内容区域 */
+        main {
+            padding: 30px 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        /* 服务卡片 */
+        .service-section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 32px;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .service-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            padding: 30px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        /* 上传区域 */
+        .upload-section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .upload-area {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .upload-hint {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* 论文格式选项 */
+        .format-options {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            color: white;
+        }
+
+        .format-options h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .format-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .format-item {
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .format-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .format-item.selected {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid white;
+        }
+
+        .custom-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .custom-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        /* 处理状态 */
+        .processing-section {
+            display: none;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .processing-section.active {
+            display: block;
+        }
+
+        .processing-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            color: white;
+        }
+
+        .processing-text {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: white;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .processing-status {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* 火车动画 */
+        .train-animation {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 150px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
+            overflow: hidden;
+            z-index: 999;
+        }
+
+        .train-animation.active {
+            display: block;
+        }
+
+        .train-track {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #333;
+        }
+
+        .train {
+            position: absolute;
+            bottom: 35px;
+            left: -200px;
+            animation: trainMove 8s linear infinite;
+        }
+
+        @keyframes trainMove {
+            0% {
+                left: -200px;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        .train-body {
+            width: 120px;
+            height: 50px;
+            background: linear-gradient(to bottom, #e74c3c, #c0392b);
+            border-radius: 10px 10px 5px 5px;
+            position: relative;
+        }
+
+        .train-window {
+            position: absolute;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background: #85c1e9;
+            border-radius: 3px;
+        }
+
+        .train-window:nth-child(1) { left: 10px; }
+        .train-window:nth-child(2) { left: 40px; }
+        .train-window:nth-child(3) { left: 70px; }
+
+        .train-wheel {
+            position: absolute;
+            bottom: -10px;
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+            border: 3px solid #666;
+        }
+
+        .train-wheel:nth-child(4) { left: 10px; }
+        .train-wheel:nth-child(5) { left: 50px; }
+        .train-wheel:nth-child(6) { right: 10px; }
+
+        .smoke {
+            position: absolute;
+            bottom: 50px;
+            left: 10px;
+        }
+
+        .smoke-particle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: smokeRise 1s ease-out infinite;
+        }
+
+        .smoke-particle:nth-child(2) {
+            animation-delay: 0.3s;
+            left: 10px;
+        }
+
+        .smoke-particle:nth-child(3) {
+            animation-delay: 0.6s;
+            left: 20px;
+        }
+
+        @keyframes smokeRise {
+            0% {
+                opacity: 0.6;
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-30px) scale(1.5);
+            }
+        }
+
+        .clouds {
+            position: absolute;
+            top: 20px;
+            font-size: 30px;
+            opacity: 0.5;
+            animation: cloudMove 15s linear infinite;
+        }
+
+        .clouds:nth-child(1) { left: 10%; animation-duration: 20s; }
+        .clouds:nth-child(2) { left: 40%; animation-duration: 25s; top: 40px; }
+        .clouds:nth-child(3) { left: 70%; animation-duration: 18s; top: 60px; }
+
+        @keyframes cloudMove {
+            0% { transform: translateX(-50px); }
+            100% { transform: translateX(calc(100vw + 50px)); }
+        }
+
+        /* 下载区域 */
+        .download-section {
+            display: none;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .download-section.active {
+            display: block;
+        }
+
+        .download-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            color: white;
+        }
+
+        .success-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .download-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .download-desc {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            padding: 18px 50px;
+            font-size: 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 页脚 */
+        footer {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px 0;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .reminder-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .upload-area {
+                padding: 40px 20px;
+            }
+
+            .upload-icon {
+                font-size: 60px;
+            }
+
+            .format-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 文件信息展示 */
+        .file-info {
+            display: none;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            color: white;
+        }
+
+        .file-info.active {
+            display: block;
+        }
+
+        .file-name {
+            font-size: 18px;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        .file-size {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* 格式预览 */
+        .format-preview {
+            display: none;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            color: white;
+        }
+
+        .format-preview.active {
+            display: block;
+        }
+
+        .format-preview h3 {
+            margin-bottom: 20px;
+        }
+
+        .preview-list {
+            list-style: none;
+        }
+
+        .preview-list li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-list li span {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">📄 论文格式助手</div>
+                <div class="nav-links">
+                    <a href="#home">首页</a>
+                    <a href="#services">服务介绍</a>
+                    <a href="#upload">上传论文</a>
+                    <a href="#contact">联系我们</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="reminder-bar">
+            <div class="weather-card frosted-glass">
+                <span class="weather-icon" id="weather-icon">☀️</span>
+                <div class="weather-info">
+                    <div class="weather-temp" id="weather-temp">--°C</div>
+                    <div id="weather-desc">加载中...</div>
+                    <div id="weather-location">定位中...</div>
+                </div>
+            </div>
+            <div class="fortune-card frosted-glass">
+                <span class="fortune-icon">🌟</span>
+                <div class="fortune-info">
+                    <div class="fortune-text" id="fortune-text">今日运势加载中...</div>
+                    <div id="fortune-lucky">幸运数字: --</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>毕业论文格式修改助手</h1>
+                <p>为本科生提供专业的论文格式修改服务，让你的论文格式规范达标</p>
+            </div>
+        </section>
+
+        <section class="service-section" id="services">
+            <div class="container">
+                <h2 class="section-title">我们的服务</h2>
+                <div class="service-cards">
+                    <div class="service-card frosted-glass">
+                        <div class="service-icon">📑</div>
+                        <h3>格式全面检查</h3>
+                        <p>自动检测论文格式问题，包括字体、字号、行距、段前段后间距等是否符合学校要求</p>
+                    </div>
+                    <div class="service-card frosted-glass">
+                        <div class="service-icon">✍️</div>
+                        <h3>一键智能修改</h3>
+                        <p>根据不同学校的要求，一键批量修改论文格式，省时省力</p>
+                    </div>
+                    <div class="service-card frosted-glass">
+                        <div class="service-icon">📊</div>
+                        <h3>多格式支持</h3>
+                        <p>支持Word(.docx)和PDF格式文件的解析和修改，兼容性强</p>
+                    </div>
+                    <div class="service-card frosted-glass">
+                        <div class="service-icon">🔍</div>
+                        <h3>详细报告</h3>
+                        <p>生成详细的格式修改报告，告诉你修改了哪些内容</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="upload-section" id="upload">
+            <div class="container">
+                <h2 class="section-title">上传你的论文</h2>
+                <div class="upload-area frosted-glass" id="upload-area">
+                    <div class="upload-icon">📤</div>
+                    <div class="upload-text">点击或拖拽文件到此处上传</div>
+                    <div class="upload-hint">支持 Word (.docx) 和 PDF 格式文件</div>
+                    <input type="file" class="file-input" id="file-input" accept=".docx,.pdf,.doc">
+                </div>
+
+                <div class="file-info frosted-glass" id="file-info">
+                    <div class="file-name" id="file-name"></div>
+                    <div class="file-size" id="file-size"></div>
+                </div>
+
+                <div class="format-options frosted-glass" id="format-options" style="display: none;">
+                    <h3>选择目标学校格式要求</h3>
+                    <div class="format-list" id="school-list">
+                        <div class="format-item" data-school="tsinghua" data-level="本科">
+                            <span>🏛️</span>
+                            <span>清华大学</span>
+                        </div>
+                        <div class="format-item" data-school="pku" data-level="本科">
+                            <span>🏛️</span>
+                            <span>北京大学</span>
+                        </div>
+                        <div class="format-item" data-school="fudan" data-level="本科">
+                            <span>🏛️</span>
+                            <span>复旦大学</span>
+                        </div>
+                        <div class="format-item" data-school="sjtu" data-level="本科">
+                            <span>🏛️</span>
+                            <span>上海交通大学</span>
+                        </div>
+                        <div class="format-item" data-school="zju" data-level="本科">
+                            <span>🏛️</span>
+                            <span>浙江大学</span>
+                        </div>
+                        <div class="format-item" data-school="nju" data-level="本科">
+                            <span>🏛️</span>
+                            <span>南京大学</span>
+                        </div>
+                        <div class="format-item" data-school="ustc" data-level="本科">
+                            <span>🏛️</span>
+                            <span>中国科学技术大学</span>
+                        </div>
+                        <div class="format-item" data-school="hit" data-level="本科">
+                            <span>🏛️</span>
+                            <span>哈尔滨工业大学</span>
+                        </div>
+                        <div class="format-item" data-school="custom" data-level="自定义">
+                            <span>⚙️</span>
+                            <span>自定义格式（上传文件）</span>
+                        </div>
+                    </div>
+
+                    <div class="custom-upload-area" id="custom-upload-area" style="display: none;">
+                        <h4>上传自定义格式文件</h4>
+                        <p style="margin-bottom: 15px; opacity: 0.9;">上传学校官方发布的论文格式要求文件（Word或PDF）</p>
+                        <div class="upload-section">
+                            <div class="upload-area frosted-glass" id="format-upload-area">
+                                <div class="upload-icon">📄</div>
+                                <div class="upload-text">点击或拖拽上传格式文件</div>
+                                <div class="upload-hint">支持 Word (.docx) 和 PDF 格式</div>
+                                <input type="file" class="file-input" id="format-file-input" accept=".docx,.pdf,.doc">
+                            </div>
+                            <div class="file-info frosted-glass" id="format-file-info" style="margin-top: 15px;">
+                                <div class="file-name" id="format-file-name"></div>
+                                <div class="file-size" id="format-file-size"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="custom-btn" id="start-process-btn">开始修改</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="processing-section" id="processing-section">
+            <div class="processing-content frosted-glass">
+                <div class="processing-text">正在处理你的论文...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="processing-status" id="processing-status">正在解析文件...</div>
+            </div>
+        </section>
+
+        <section class="download-section" id="download-section">
+            <div class="download-content frosted-glass">
+                <div class="success-icon">✅</div>
+                <div class="download-title">格式修改完成！</div>
+                <div class="download-desc">你的论文格式已按照要求修改完成，点击下方按钮下载</div>
+                <button class="download-btn" id="download-btn">下载修改后的论文</button>
+            </div>
+        </section>
+    </main>
+
+    <div class="train-animation" id="train-animation">
+        <div class="clouds">☁️</div>
+        <div class="clouds">☁️</div>
+        <div class="clouds">☁️</div>
+        <div class="train-track"></div>
+        <div class="train">
+            <div class="train-body">
+                <div class="train-window"></div>
+                <div class="train-window"></div>
+                <div class="train-window"></div>
+                <div class="train-wheel"></div>
+                <div class="train-wheel"></div>
+                <div class="train-wheel"></div>
+            </div>
+            <div class="smoke">
+                <div class="smoke-particle"></div>
+                <div class="smoke-particle"></div>
+                <div class="smoke-particle"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <p>© <span id="current-year"></span> 论文格式修改助手 | 为本科生提供专业的论文格式服务</p>
+        </div>
+    </footer>
+
+    <script>
+        // 自动更新年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // 季节检测和色调设置
+        function setSeasonTheme() {
+            const month = new Date().getMonth();
+            const body = document.body;
+
+            if (month >= 2 && month <= 4) {
+                body.classList.add('spring');
+            } else if (month >= 5 && month <= 7) {
+                body.classList.add('summer');
+            } else if (month >= 8 && month <= 10) {
+                body.classList.add('autumn');
+            } else {
+                body.classList.add('winter');
+            }
+        }
+
+        setSeasonTheme();
+
+        // 获取地理位置和天气
+        async function getWeatherAndFortune() {
+            try {
+                // 获取地理位置
+                const position = await new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(resolve, reject);
+                });
+
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+
+                // 使用免费API获取天气
+                const weatherResponse = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
+                const weatherData = await weatherResponse.json();
+
+                const temp = weatherData.current_weather.temperature;
+                const weatherCode = weatherData.current_weather.weathercode;
+
+                // 转换天气代码为文字
+                const weatherIcons = {
+                    0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+                    45: '🌫️', 48: '🌫️',
+                    51: '🌧️', 53: '🌧️', 55: '🌧️',
+                    61: '🌧️', 63: '🌧️', 65: '🌧️',
+                    71: '🌨️', 73: '🌨️', 75: '🌨️',
+                    80: '🌦️', 81: '🌦️', 82: '🌦️',
+                    95: '⛈️', 96: '⛈️', 99: '⛈️'
+                };
+
+                const weatherIcon = weatherIcons[weatherCode] || '🌤️';
+                const weatherDescs = {
+                    0: '晴朗',
+                    1: '大致晴朗',
+                    2: '多云',
+                    3: '阴天',
+                    45: '雾',
+                    48: '霜雾',
+                    51: '小毛毛雨',
+                    53: '毛毛雨',
+                    55: '大毛毛雨',
+                    61: '小雨',
+                    63: '中雨',
+                    65: '大雨',
+                    71: '小雪',
+                    73: '中雪',
+                    75: '大雪',
+                    80: '小阵雨',
+                    81: '中阵雨',
+                    82: '大阵雨',
+                    95: '雷暴',
+                    96: '雷暴伴小冰雹',
+                    99: '雷暴伴大冰雹'
+                };
+
+                document.getElementById('weather-icon').textContent = weatherIcon;
+                document.getElementById('weather-temp').textContent = `${temp}°C`;
+                document.getElementById('weather-desc').textContent = weatherDescs[weatherCode] || '未知';
+                document.getElementById('weather-location').textContent = '当前位置';
+
+            } catch (error) {
+                // 如果获取位置失败，显示默认天气
+                document.getElementById('weather-icon').textContent = '🌤️';
+                document.getElementById('weather-temp').textContent = '20°C';
+                document.getElementById('weather-desc').textContent = '晴朗';
+                document.getElementById('weather-location').textContent = '默认位置';
+            }
+
+            // 生成运势
+            const fortunes = [
+                { text: '今日运势极佳，适合处理论文格式问题！', lucky: Math.floor(Math.random() * 9) + 1 },
+                { text: '今日运势良好，论文修改将会很顺利！', lucky: Math.floor(Math.random() * 9) + 1 },
+                { text: '今日运势平稳，按部就班完成论文修改吧！', lucky: Math.floor(Math.random() * 9) + 1 },
+                { text: '今日运势小吉，可能会有小惊喜哦！', lucky: Math.floor(Math.random() * 9) + 1 },
+                { text: '今日心态平和，论文修改效率会很高！', lucky: Math.floor(Math.random() * 9) + 1 }
+            ];
+
+            const todayFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+            document.getElementById('fortune-text').textContent = todayFortune.text;
+            document.getElementById('fortune-lucky').textContent = `幸运数字: ${todayFortune.lucky}`;
+        }
+
+        getWeatherAndFortune();
+
+        // 文件上传处理
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('file-input');
+        const fileInfo = document.getElementById('file-info');
+        const fileName = document.getElementById('file-name');
+        const fileSize = document.getElementById('file-size');
+        const formatOptions = document.getElementById('format-options');
+
+        uploadArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.transform = 'scale(1.02)';
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.transform = 'scale(1)';
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.transform = 'scale(1)';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            const validTypes = [
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                'application/pdf',
+                'application/msword'
+            ];
+
+            const validExtensions = ['.docx', '.pdf', '.doc'];
+
+            const fileExtension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+
+            if (!validExtensions.includes(fileExtension)) {
+                alert('请上传 Word (.docx, .doc) 或 PDF 格式的文件！');
+                return;
+            }
+
+            fileName.textContent = `文件名: ${file.name}`;
+            fileSize.textContent = `文件大小: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+
+            fileInfo.classList.add('active');
+            formatOptions.style.display = 'block';
+        }
+
+        // 格式模板选择
+        const formatItems = document.querySelectorAll('.format-item');
+        let selectedSchool = '';
+        let selectedLevel = '';
+
+        formatItems.forEach(item => {
+            item.addEventListener('click', () => {
+                formatItems.forEach(i => i.classList.remove('selected'));
+                item.classList.add('selected');
+                selectedSchool = item.dataset.school;
+                selectedLevel = item.dataset.level;
+
+                // 如果是自定义格式选项，隐藏学校列表，显示自定义上传区域
+                if (selectedSchool === 'custom') {
+                    document.getElementById('custom-upload-area').style.display = 'block';
+                } else {
+                    document.getElementById('custom-upload-area').style.display = 'none';
+                }
+            });
+        });
+
+        // 自定义格式文件上传
+        const formatUploadArea = document.getElementById('format-upload-area');
+        const formatFileInput = document.getElementById('format-file-input');
+        const formatFileInfo = document.getElementById('format-file-info');
+        const formatFileName = document.getElementById('format-file-name');
+        const formatFileSize = document.getElementById('format-file-size');
+
+        formatUploadArea.addEventListener('click', () => {
+            formatFileInput.click();
+        });
+
+        formatUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            formatUploadArea.style.transform = 'scale(1.02)';
+        });
+
+        formatUploadArea.addEventListener('dragleave', () => {
+            formatUploadArea.style.transform = 'scale(1)';
+        });
+
+        formatUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            formatUploadArea.style.transform = 'scale(1)';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFormatFile(files[0]);
+            }
+        });
+
+        formatFileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFormatFile(e.target.files[0]);
+            }
+        });
+
+        function handleFormatFile(file) {
+            const validExtensions = ['.docx', '.pdf', '.doc'];
+            const fileExtension = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+
+            if (!validExtensions.includes(fileExtension)) {
+                alert('请上传 Word (.docx, .doc) 或 PDF 格式的格式文件！');
+                return;
+            }
+
+            formatFileName.textContent = `格式文件: ${file.name}`;
+            formatFileSize.textContent = `文件大小: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+            formatFileInfo.classList.add('active');
+        }
+
+        // 学校格式要求数据
+        const schoolFormats = {
+            'tsinghua': {
+                'name': '清华大学',
+                'fonts': '宋体（小四）/ Times New Roman',
+                'fontSize': '12pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.54cm，左右3.17cm',
+                'titleRequirements': '题目前加黑点，题目字数不超过25字'
+            },
+            'pku': {
+                'name': '北京大学',
+                'fonts': '黑体（三号）/ Times New Roman',
+                'fontSize': '14pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.5cm，左右3cm',
+                'titleRequirements': '题目光标居中加粗'
+            },
+            'fudan': {
+                'name': '复旦大学',
+                'fonts': '宋体（四号）/ Times New Roman',
+                'fontSize': '14pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.54cm，左右3.17cm',
+                'titleRequirements': '题目加粗居中'
+            },
+            'sjtu': {
+                'name': '上海交通大学',
+                'fonts': '宋体（小四）/ Times New Roman',
+                'fontSize': '12pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.54cm，左右3.17cm',
+                'titleRequirements': '题目加粗居中，字数不超过25字'
+            },
+            'zju': {
+                'name': '浙江大学',
+                'fonts': '宋体（小四）/ Times New Roman',
+                'fontSize': '12pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.54cm，左右3.17cm',
+                'titleRequirements': '题目光标居中加粗'
+            },
+            'nju': {
+                'name': '南京大学',
+                'fonts': '黑体（小四）/ Times New Roman',
+                'fontSize': '12pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.54cm，左右3.17cm',
+                'titleRequirements': '题目居中加粗'
+            },
+            'ustc': {
+                'name': '中国科学技术大学',
+                'fonts': '宋体（小四）/ Times New Roman',
+                'fontSize': '12pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.54cm，左右3.17cm',
+                'titleRequirements': '题目居中加粗'
+            },
+            'hit': {
+                'name': '哈尔滨工业大学',
+                'fonts': '宋体（小四）/ Times New Roman',
+                'fontSize': '12pt',
+                'lineSpacing': '1.5倍行距',
+                'pageMargins': '上下2.54cm，左右3.17cm',
+                'titleRequirements': '题目居中加粗，字数不超过25字'
+            }
+        };
+
+        // 开始处理
+        const startProcessBtn = document.getElementById('start-process-btn');
+        const processingSection = document.getElementById('processing-section');
+        const trainAnimation = document.getElementById('train-animation');
+        const progressFill = document.getElementById('progress-fill');
+        const processingStatus = document.getElementById('processing-status');
+        const downloadSection = document.getElementById('download-section');
+
+        startProcessBtn.addEventListener('click', async () => {
+            if (!selectedSchool) {
+                alert('请选择学校格式要求！');
+                return;
+            }
+
+            formatOptions.style.display = 'none';
+            processingSection.classList.add('active');
+            trainAnimation.classList.add('active');
+
+            let schoolName = selectedSchool === 'custom' ? '自定义格式' : schoolFormats[selectedSchool].name;
+
+            const steps = [
+                { status: `正在解析文件（目标：${schoolName}）...`, progress: 20 },
+                { status: '检测论文格式...', progress: 40 },
+                { status: `应用 ${schoolName} 格式要求...`, progress: 60 },
+                { status: '修改字体和字号...', progress: 75 },
+                { status: '调整行距和页边距...', progress: 85 },
+                { status: '生成修改报告...', progress: 95 },
+                { status: '处理完成！', progress: 100 }
+            ];
+
+            for (const step of steps) {
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                processingStatus.textContent = step.status;
+                progressFill.style.width = `${step.progress}%`;
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            trainAnimation.classList.remove('active');
+            processingSection.classList.remove('active');
+            downloadSection.classList.add('active');
+
+            // 重置进度
+            progressFill.style.width = '0%';
+        });
+
+        // 下载按钮
+        document.getElementById('download-btn').addEventListener('click', () => {
+            alert('在真实环境中，这里会生成并下载修改后的论文文件。\n\n实际使用需要后端服务支持文件解析和格式修改。');
+        });
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .format-options, .upload-area').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
